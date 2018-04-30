@@ -38,8 +38,8 @@ from greyatomlib.advanced_linear_regression.q02_Max_important_feature.build impo
 # print (np.round_(prediction,2), np.array([np.round_(32740.9,2)]))
 
 
-def polynomial(power=5,random_state=9):
-    Poly_Xtrain = X_train.iloc[:,[2,14,24,25]]
+def polynomial(power=5, random_state=9):
+    Poly_Xtrain = X_train[['OverallQual', 'GrLivArea', 'GarageCars', 'GarageArea']]
     Poly_ytrain = y_train
     poly_features = make_pipeline(PolynomialFeatures(power, include_bias=False), LinearRegression())
     model = poly_features.fit(Poly_Xtrain, Poly_ytrain)
@@ -47,4 +47,4 @@ def polynomial(power=5,random_state=9):
 
 model = polynomial()
 prediction = model.predict(np.array([4, 5, 6, 7]).reshape(1, -1))
-print (np.round_(prediction,2), np.array([np.round_(32740.9,2)]))
+print (np.round_(prediction,2), np.array([np.round_(32740.9,0)]))
